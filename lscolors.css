@@ -1,0 +1,35 @@
+div.fixed
+{
+    font-family: Menlo, "Deja Vu Sans Mono", Consolas, monospace;
+    font-size: 12px;
+    padding: 0;
+    white-space: pre;
+}
+
+div.graybox
+{
+    padding: 2px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+div.colorPicker
+{
+    padding: 2px;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.ls
+{
+    font-family: Menlo, "Deja Vu Sans Mono", Consolas, monospace;
+    font-weight: normal;
+    white-space: pre;
+}
+
+span#cursor
+{
+    font-family: Menlo, "Deja Vu Sans Mono", Consolas, monospace;
+    white-space: pre;
+}

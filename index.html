@@ -1,0 +1,174 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Kamaletron</title>
+  <meta name="author" content="Paulo J. Martins" />
+  <meta name="viewport" content="width=760" />
+  <link type="text/css" href="lscolors.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <script type="text/javascript">
+  //<![CDATA[
+  var _gaq = _gaq || [];
+  var main_css = document.getElementById("main-css");
+  var styles = {
+    light: ["Light", "", "/styles/main.css", "/styles/solarized-light.css"],
+    dark: ["Dark", "#000", "/styles/main-inverted.css", "/styles/solarized-dark.css"]
+  };
+  function set_style(style) {
+    var date = new Date();
+    _gaq.push(["_setCustomVar", 1, "Color", style[0], 1]);
+    document.body.style.background = style[1];
+    main_css.attributes.href.value = style[2];
+    date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
+    document.cookie = "main-css=" + main_css.attributes.href.value + "; expires=" + date.toGMTString() + "; path=/";
+    return style;
+  }
+  function set_colors() {
+    var i, cookies, key, value;
+    cookies = document.cookie.split("; ");
+    for (i = 0; i < cookies.length; i++) {
+      key = cookies[i].split("=")[0];
+      value = cookies[i].split("=")[1];
+      if (key === "main-css" && value === "/styles/main-inverted.css") {
+        set_style(styles.dark);
+      }
+    }
+    if (window.location.hash.slice(1) === "dark") {
+      set_style(styles.dark);
+    } else if (window.location.hash.slice(1) === "light") {
+      set_style(styles.light);
+    }
+  }
+  function invert_colors() {
+    var style = main_css.attributes.href.value === "/styles/main.css" ? set_style(styles.dark) : set_style(styles.light);
+    _gaq.push(["_trackEvent", "Color", "Set style", style[0]]);
+  }
+  set_colors();
+  //]]>
+  </script>
+<div id="wrapper">
+<hr />
+<br />
+<table style="background-color: #aaa; border: thin dotted #555; margin: 0px auto;">
+  <tr>
+    <td>
+      <div class="graybox" style="text-align: right">
+      File type:
+      </div>
+    </td>
+    <td>
+    <div class="colorPicker">
+      <select id="currentColorIndex">
+        <option value="0">Directory</option>
+        <option value="1">Symbolic link</option>
+        <option value="2">Socket</option>
+        <option value="3">Pipe</option>
+        <option value="4">Executable</option>
+        <option value="5">Block special</option>
+        <option value="6">Character special</option>
+        <option value="7">Setuid Executable</option>
+        <option value="8">Setgid Executable</option>
+        <option value="9">Directory writable to others, with sticky bit</option>
+        <option value="10">Directory writable to others, no sticky bit</option>
+      </select>
+    </div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="graybox" style="text-align: right">
+      Foreground:
+      </div>
+    </td>
+    <td>
+      <div class="colorPicker">
+        <img alt="Black" width="20" height="20" src="colors/black.png" onclick="changeColor('a',0)" />
+        <img alt="Red" width="20" height="20" src="colors/red.png" onclick="changeColor('b',0)" />
+        <img alt="Green" width="20" height="20" src="colors/green.png" onclick="changeColor('c',0)" />
+        <img alt="Brown" width="20" height="20" src="colors/brown.png" onclick="changeColor('d',0)" />
+        <img alt="Blue" width="20" height="20" src="colors/blue.png" onclick="changeColor('e',0)" />
+        <img alt="Magenta" width="20" height="20" src="colors/magenta.png" onclick="changeColor('f',0)" />
+        <img alt="Cyan" width="20" height="20" src="colors/cyan.png" onclick="changeColor('g',0)" />
+        <img alt="Gray" width="20" height="20" src="colors/gray.png" onclick="changeColor('h',0)" />
+        <img alt="Default" width="20" height="20" src="colors/default.png" onclick="changeColor('x',0)" />
+      </div>
+    </td>
+    <td>
+      <div class="graybox">
+        <input id="isForegroundBold" type="checkbox" onclick="if(this.checked){BoldText(0)}else{unBoldText(0)}" />Bold
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="graybox" style="text-align: right">
+      Background:
+      </div>
+    </td>
+    <td>
+      <div class="colorPicker">
+        <img alt="Black" width="20" height="20" src="colors/black.png" onclick="changeColor('a',1)" />
+        <img alt="Red" width="20" height="20" src="colors/red.png" onclick="changeColor('b',1)" />
+        <img alt="Green" width="20" height="20" src="colors/green.png" onclick="changeColor('c',1)" />
+        <img alt="Brown" width="20" height="20" src="colors/brown.png" onclick="changeColor('d',1)" />
+        <img alt="Blue" width="20" height="20" src="colors/blue.png" onclick="changeColor('e',1)" />
+        <img alt="Magenta" width="20" height="20" src="colors/magenta.png" onclick="changeColor('f',1)" />
+        <img alt="Cyan" width="20" height="20" src="colors/cyan.png" onclick="changeColor('g',1)" />
+        <img alt="Gray" width="20" height="20" src="colors/gray.png" onclick="changeColor('h',1)" />
+        <img alt="Default" width="20" height="20" src="colors/default.png" onclick="changeColor('x',1)" />
+      </div>
+    </td>
+    <td>
+      <div class="graybox">
+        <input id="isBackgroundBold" type="checkbox" onclick="if(this.checked){BoldText(1)}else{unBoldText(1)}" />Bold
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: right; font-family: monospace">BSD LSCOLORS=</td>
+    <td>
+      <input style="font-family: monospace" id="colorStringBSD" type="text" value="exfxcxdxbxegedabagacad" maxlength="22" size="23"/>
+    </td>
+    <td>
+      <input type="button" id="colorize" value="preview"/>
+    </td>
+</tr>
+<tr>
+    <td style="text-align: right; font-family: monospace">Linux LS_COLORS=</td>
+    <td>
+      <input style="font-family: monospace" id="colorStringLinux" type="text" value="" size="35" />
+    </td>
+    <td>
+    </td>
+  </tr>
+</table>
+<br />
+
+<div class="fixed">
+blah:~/color_test root# ls -l
+total 8
+drwxr-xr-x    2 root   root         68 Jul 31 15:52     <span id="directory" class="ls">1-directory</span>
+lrwxr-xr-x    1 root   root          9 Jul 31 15:52     <span id="system_link" class="ls">2-system_link -> /dev/null</span>
+srw-r--r--    1 root   root          0 Jul 31 15:53     <span id="socket" class="ls">3-socket</span>
+prw-r--r--    1 root   root          0 Jul 31 15:53     <span id="pipe" class="ls">4-pipe</span>
+-rwxrwxrwx    1 root   root          0 Jul 31 15:52     <span id="executable" class="ls">5-executable</span>
+brw-r--r--    1 root   root    14,   0 Jul 31 15:52     <span id="block_special" class="ls">6-block_special</span>
+crw-r--r--    1 root   root     3,   2 Jul 31 15:52     <span id="char_special" class="ls">7-char_special</span>
+-rwsrwxrwx    1 root   root          0 Jul 31 15:52     <span id="exe_setuid" class="ls">8-exe_setuid</span>
+-rwxrwsrwx    1 root   root          0 Jul 31 15:52     <span id="exe_setgid" class="ls">9-exe_setgid</span>
+drwxrwxrwt    2 root   root         68 Jul 31 15:52     <span id="dir_writeothers_sticky" class="ls">a-dir_writeothers_sticky</span>
+drwxrwxrwx    2 root   root         68 Jul 31 15:52     <span id="dir_writeothers_nosticky" class="ls">b-dir_writeothers_NOsticky</span>
+blah:~/color_test root# <span id="cursor"> </span>
+</div>
+
+
+<script type="text/javascript">require('./app.js')</script>
+</div>
+</body>
+</html>

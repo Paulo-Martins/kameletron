@@ -1,0 +1,19 @@
+{
+  "name": "kameletron",
+  "version": "0.9.1",
+  "description": "Bash customization app",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "bash",
+    "colors"
+  ],
+  "author": "Paulo J. Martins",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
