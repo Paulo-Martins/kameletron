@@ -1,4 +1,4 @@
-var exec = require('child_process').exec;
+var exec = require('child_process').execFile;
 let $ = require('jquery')
 var cmd = "./colorize.sh";
 const ipc = require('electron').ipcRenderer
@@ -298,19 +298,22 @@ function readyFn( jQuery ) {
 
     colorize.addEventListener('click', function (event) {
         
+	//var cmd = "./resources/app/colorize.sh";
+
 	var cmd = "./colorize.sh";
+
 	console.log("entrou................");
         makePreview();
         var teste = updateColorString();
         console.log(teste);
           //console.log("----------" + translateColorToLinux(colorString));
-          cmd=cmd + " '" + teste +"'";
+         // cmd=cmd + " '" + teste +"'";
           console.log(cmd);
 
 
 //	shell.exec("./colorize.sh");
 
-        exec(cmd, function(error, stdout, stderr) {
+        exec(cmd,[teste], function(error, stdout, stderr) {
         //   // command output is in stdout
         console.log(stdout);
         console.log(stderr);

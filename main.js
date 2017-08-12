@@ -5,7 +5,11 @@ const ipc = require('electron').ipcMain
 let win
 
 function createWindow() {
-   win = new BrowserWindow({width: 800, height: 600})
+   win = new BrowserWindow({
+				width: 800,
+			 	height: 600,
+				icon: path.join(__dirname, '64x64.png')
+			})
    win.loadURL(url.format({
       pathname: path.join(__dirname, 'index.html'),
       protocol: 'file:',
